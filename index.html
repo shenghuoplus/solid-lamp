@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3f7658">
+  <title>静心运动 · 手机版</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data.js"></script>
+  <script defer src="midi.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<header><div class="wrap"><h1>静心运动</h1><p>每天一点，慢慢来 · 手机版</p></div></header>
+<nav class="tabs wrap" aria-label="主要功能">
+  <button data-page="exercise">调节练习</button><button data-page="music">睡前音乐</button>
+  <button data-page="care">练习与记录</button><button data-page="reflection">心理小语</button>
+</nav>
+<main class="wrap">
+  <div id="message" role="status" aria-live="polite"></div>
+  <section id="exercise" class="page">
+    <h2>选择今天的练习</h2><p>选择一项即可；不舒服时请停止。</p>
+    <label for="program">练习项目</label><select id="program"></select>
+    <article class="card">
+      <span class="tag" id="tag"></span><h2 id="program-title"></h2>
+      <p id="intro"></p><p class="green" id="when"></p>
+      <div class="illustration" id="illustration"></div>
+      <label class="check"><input type="checkbox" id="animate" checked> 播放动态示意（前庭和平衡保持静态）</label>
+      <p class="muted">示意图仅供理解，不代表运动节奏；请以文字和舒适程度为准。</p>
+      <h3 id="stage"></h3><div id="timer" class="timer">00:00</div>
+      <p id="instruction" class="instruction"></p>
+      <div class="buttons"><button id="start">开始练习</button><button id="previous" class="secondary">上一步</button><button id="next" class="secondary">下一步</button><button id="stop" class="secondary">结束练习</button></div>
+      <label class="check"><input type="checkbox" id="pause-each" checked> 每步结束后暂停，准备好再继续</label>
+      <label class="check"><input type="checkbox" id="background"> 播放本练习搭配的自然声（先调低音量）</label>
+      <p class="notice" id="notice"></p>
+      <details><summary>查看全部动作步骤</summary><ol id="steps"></ol></details>
+    </article>
+    <article class="card warning"><h3>安全提醒</h3><p>本程序不能替代诊断或治疗。耳鸣伴突发听力下降、面部无力或旋转性眩晕，以及头部受伤后出现耳鸣，请立即就医；脉搏同步的耳鸣应尽快就医。腰痛伴会阴麻木、大小便异常或双腿无力时立即就医。情绪持续低落或影响生活，请寻求专业帮助；有自伤危险时立即联系急救或可信赖的人。</p></article>
+  </section>
+  <section id="music" class="page" hidden>
+    <h2>睡前音乐</h2><p>先调低音量；如不舒服请停止。自然录音有短片段，部分含雷声；器乐由浏览器合成，不保证助眠效果。</p>
+    <article class="card"><label for="category">音乐分类</label><select id="category"></select>
+      <label for="track">选择曲目</label><select id="track"></select><p id="source" class="muted"></p>
+      <label for="duration">播放方式</label><select id="duration"><option value="group">播完整组</option><option value="one">单首循环（手动停止）</option><option value="one15">单首循环 15 分钟</option><option value="one30">单首循环 30 分钟</option><option value="one60">单首循环 60 分钟</option><option value="group15">整组循环 15 分钟</option><option value="group30">整组循环 30 分钟</option><option value="group60">整组循环 60 分钟</option></select>
+      <div class="buttons"><button id="play-music">播放选中内容</button><button id="pause-music" class="secondary">暂停</button><button id="stop-music" class="secondary">停止</button></div>
+      <p id="music-status" role="status">尚未播放</p><p class="muted">手机锁屏或切到其他应用时，播放和计时可能被系统暂停；定时按实际经过时间计算。赞美诗具有宗教背景，自愿选择。</p>
+    </article>
+  </section>
+  <section id="care" class="page" hidden>
+    <h2>练习与记录</h2><p>记录仅保存在当前手机浏览器，未加密；清除浏览器数据可能丢失。不会自动导入电脑记录。</p>
+    <details class="card"><summary>前庭与平衡指导</summary><p>先由专业人员评估，按个人处方练习，有照看者保护。坐稳，看眼睛同高、一臂远的固定目标，按处方轻轻转头；目标和手机不要随头移动。站立时靠稳固台面、穿防滑鞋，照看者在旁；不要站着操作手机。明显失衡、接近跌倒或症状明显加重时立即停止。不要自行闭眼或增加难度。</p></details>
+    <details class="card"><summary>睡眠与情绪指导</summary><p>保持起床时间大致规律，白天适当接触自然光。睡前自然呼吸、身体扫描；不需要憋气或强迫睡着。越躺越清醒时，可安全起身到昏暗处做安静的事，困了再回床。持续失眠影响生活时咨询专业人员，了解 CBT-I。</p><p>每天可选择一件愉快、有成就感或与人连接的小事，不要求心情一定变好。焦虑时感受双脚踩地、看看周围物品；若不适则停止。</p></details>
+    <details class="card"><summary>中医养生提示</summary><p>自愿轻触，不保证疗效，不替代就医。印堂位于两眉中点前额，不压眼球；内关在掌心一侧腕横纹向手肘约三指宽、两筋之间。不确定位置就跳过；不要用力或针刺。</p><p>皮肤破损、红肿、感染或皮疹处勿触碰；容易出血、服抗凝药、怀孕或有其他疾病时先咨询医生，不舒服立即停止。</p></details>
+    <article class="card"><h3>填写记录</h3><label for="record-kind">记录类型</label><select id="record-kind"><option>睡眠</option><option>前庭和平衡</option><option>日常活动</option><option>情绪小记</option></select><form id="record-form"><div id="record-fields"></div><button type="submit">保存到本机</button></form></article>
+    <article class="card"><h3>本机记录</h3><button id="delete-records" class="secondary">清除全部记录</button><div id="records"></div></article>
+  </section>
+  <section id="reflection" class="page" hidden><h2>心理小语</h2><article class="card"><p id="quote" class="quote"></p><p id="quote-source" class="muted"></p><p id="quote-note"></p><div class="buttons"><button id="quote-prev" class="secondary">上一条</button><button id="quote-next">随机下一条</button><button id="quote-auto" class="secondary">暂停轮换</button></div><p class="muted">每 30 秒轮换。5000 条中大部分由原创情境与建议组合而成，不是 5000 条名人名言；不能代替专业治疗。</p></article></section>
+</main>
+<footer class="wrap">按自己的节奏来；需要时请家人或专业人员帮助。</footer>
+</body>
+</html>
